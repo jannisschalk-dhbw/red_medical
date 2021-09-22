@@ -4,6 +4,7 @@ const path = require("path");
 const fs = require("fs");
 const FileDecrypter_1 = require("./crypto/FileDecrypter");
 const TextProcessor_1 = require("./util/TextProcessor");
+const Server_1 = require("./http/Server");
 const decrypter = new FileDecrypter_1.default();
 decrypter.doDecrypt();
 //TODO: use output of decrypter
@@ -30,3 +31,5 @@ console.log("a)");
 console.log("Result: " + biggestSumsInSentence);
 console.log("b)");
 console.log("Result:" + asciiConverterResult);
+let server = new Server_1.default(asciiConverterResult);
+server.start();

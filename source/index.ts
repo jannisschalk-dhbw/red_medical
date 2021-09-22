@@ -2,6 +2,7 @@ import * as path from 'path'
 import * as fs from "fs"
 import FileDecrypter from "./crypto/FileDecrypter"
 import TextProcessor from "./util/TextProcessor";
+import Server from "./http/Server"
 
 const decrypter = new FileDecrypter()
 decrypter.doDecrypt();
@@ -21,7 +22,6 @@ let vocalValence: number = textProcessor.addVocalValenceToSum(sumOfAllNumbers, t
 let biggestSumsInSentence = textProcessor.findThreeBiggestSumsOfSentencesInTextSortedByThierOccuenceAndSubtractedIndex(text);
 let asciiConverterResult = textProcessor.convertIntToCharByAscii(biggestSumsInSentence);
 
-
 console.log("--Task 2--")
 console.log("Description: Sum of all number in text")
 console.log("Result: " + sumOfAllNumbers)
@@ -38,7 +38,8 @@ console.log("Result: " + biggestSumsInSentence);
 console.log("b)");
 console.log("Result:" + asciiConverterResult);
 
-
+let server = new Server(asciiConverterResult);
+server.start();
 
 
 
